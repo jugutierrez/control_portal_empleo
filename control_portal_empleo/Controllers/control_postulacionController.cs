@@ -444,14 +444,17 @@ namespace control_portal_empleo.Controllers
                 if (id_estado_postulacion == "2")
                 {
                     mensaje = "Le agradecemos haber participado en el proceso de seleccion pero tenemos un candidato que se ajusta mas al perfil requerido. en cualquier caso , nos pondremos en contacto con usted si surge una vacante relacionada con su perfil profesional.";
-                   await m.Correo_estados_postulacion(correo, titulo, mensaje);
+                   
+
+                    m.enviar_correo(null, correo, 4);
                 }
 
                 if (id_estado_postulacion == "3")
                 {
 
                     mensaje = " ha sido seleccionado como un candidato con el perfil necesario para el puesto de trabajo , en lo proximo se contactaran con usted.";
-                  await  m.Correo_estados_postulacion(correo, titulo, mensaje);
+                
+                    m.enviar_correo(null, correo, 5);
                 }
                 carga_estado_actual_postulante(id_persona, id_oferta); 
                 return PartialView("_status_final_postulacion_persona");
@@ -587,8 +590,8 @@ namespace control_portal_empleo.Controllers
                     titulo = "Estado de su postulacion ";
                     correo = k.correo_electronico_persona;
                     mensaje = "estimado en estos momentos se ha comenzado la revision de sus datos para su evaluacion de aptitud para la oferta postulada.";
-                    Boolean a = await m.Correo_estados_postulacion(correo, titulo, mensaje);
-                   
+                   // Boolean a = await m.Correo_estados_postulacion(correo, titulo, mensaje);
+                    m.enviar_correo(null, correo, 6);
 
                 }
                 return PartialView("_status_postulacion_persona");
@@ -617,8 +620,8 @@ namespace control_portal_empleo.Controllers
                     titulo = "Estado de su postulacion";
                     correo = k.correo_electronico_persona;
                     mensaje = "Se ha revocado la decision anterior sobre el estado de su postulacion , le informamos que nuevmente ha ingresado al proceso de evaluacion."+ motivo_cambio;
-                    Boolean a = await m.Correo_estados_postulacion(correo, titulo, mensaje);
-
+                    //Boolean a = await m.Correo_estados_postulacion(correo, titulo, mensaje);
+                    m.enviar_correo(null, correo, 7);
 
                 }
              

@@ -257,7 +257,8 @@ namespace control_portal_empleo.Controllers
             
 
       
-               m.Correo_recupera_credenciales(rad[1], Convert.ToInt32(rad[2]) , Convert.ToInt32(rad[3]) ,Convert.ToInt32( rad[4]) , rad[5]);
+            
+                m.enviar_correo(null, rad[5], 2);
                 return Json(new { success = true, responseText = "Correo Enviado exitosamente , en breve un encargado se pondra en contacto." }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

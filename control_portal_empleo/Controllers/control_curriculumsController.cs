@@ -314,14 +314,14 @@ namespace control_portal_empleo.Controllers
 
                     byte[] Curriculum_vitae = lol2.BuildFile(this.ControllerContext);
                  
-                    string titulo = "Portal de empleos (curriculum de interes)";
-                    string mensaje = "Estimado , hago envio de copia de este curriculum el cual puede ser de su interes.";
-                    Boolean ka = await m.correos(correo, Curriculum_vitae, titulo, mensaje);
-                    if (ka == true)
-                    { return Json(new { success = true, responseText = "Correo Enviado Con Exito" }, JsonRequestBehavior.AllowGet); }
+                    //string titulo = "Portal de empleos (curriculum de interes)";
+                    //string mensaje = "Estimado , hago envio de copia de este curriculum el cual puede ser de su interes.";
+                    //Boolean ka = await m.correos(correo, Curriculum_vitae, titulo, mensaje);
+                    m.enviar_correo(Curriculum_vitae, correo, 1);
+               
+                    return Json(new { success = true, responseText = "El Correo ha sido enviado" }, JsonRequestBehavior.AllowGet); 
                   
-                    else
-                    { return Json(new { success = false, responseText = "Su Correo No pudo ser enviado a la direccion proporcionada , favor verificar" }, JsonRequestBehavior.AllowGet); }
+               
                 }
             }
             catch (Exception ex)
@@ -350,16 +350,12 @@ namespace control_portal_empleo.Controllers
            
                     string titulo = "Portal empleos Maipu(Invitacion Empleo)";
                     string mensaje = " estimado/a ,  te invito a postular a http://portalempleo.azurewebsites.net/Ofertas_Control/vista_detalle_oferta/" + id_oferta + " , ya que esta oferta puede ser de tu interes";
-                   Boolean ka = await m.correos(correo, Curriculum_vitae, titulo, mensaje);
-
-                    if (ka == true)
-                    {
+                  // Boolean ka = await m.correos(correo, Curriculum_vitae, titulo, mensaje);
+                    m.enviar_correo(Curriculum_vitae, correo, 3);
+                
                         return Json(new { success = true, responseText = "Correo Enviado Con Exito" }, JsonRequestBehavior.AllowGet);
-                    }
-                    else
-                    {
-                        return Json(new { success = false, responseText = "Su Correo No pudo ser enviado a la direccion proporcionada , favor verificar" }, JsonRequestBehavior.AllowGet);
-                    }
+                 
+                    
                
                 }
             }

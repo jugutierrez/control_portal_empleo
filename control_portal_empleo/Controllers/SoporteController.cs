@@ -56,8 +56,8 @@ namespace control_portal_empleo.Controllers
 
                         correo_soporte.foto_soporte = data;
                     }
-                   Boolean k = await m.Correo_Soporte(correo_soporte.correo_remitente, correo_soporte.nombre_remitente, correo_soporte.anexo_remitente, correo_soporte.asunto_soporte, correo_soporte.mensaje_soporte, correo_soporte.foto_soporte);
-
+                 
+                    m.enviar_correo(correo_soporte.foto_soporte, correo_soporte.correo_remitente, 0);
                     return Json(new { success = true, responseText = "Correo Enviado Con Exito" }, JsonRequestBehavior.AllowGet);
                 }
              
