@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+    @if (Request.IsAuthenticated)
+    {
+
+
+         
+        
+   
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Inicio", "Index", "ofertas_main", null, new { @class = "navbar-brand" })
+        </div>
+            <ul class="nav navbar-nav navbar-left">
+
+
+               @if ((bool)ViewBag.crear_ofertas == true) { 
+                    <li>@Html.ActionLink("Crear Oferta", "oferta_main_crear", "ofertas_main", routeValues: null, htmlAttributes: new { id = "crear_oferta" })</li>
+                }
+                @if ((bool)ViewBag.listado_ofertas == true)
+                {
+                    <li>@Html.ActionLink("Listado de Ofertas", "mis_ofertas", "ofertas_main", routeValues: null, htmlAttributes: new { id = "mis_ofertas" })</li>
+                }
+                @if ((bool)ViewBag.ver_curriculums == true)
+                {
+                    <li>@Html.ActionLink("Buscar Curriculums", "index", "control_curriculums", routeValues: null, htmlAttributes: new { id = "curriculums" })</li>
+                }
+                @if ((bool)ViewBag.informes_basicos == true)
+                {
+                    <li>@Html.ActionLink("Panel de Control", "index", "control_informes", routeValues: null, htmlAttributes: new { id = "informes" })</li>
+                }
+                <li><a data-toggle="modal" data-target="#mdsoporte" id="btn2" class="btn2" data-url="/Soporte/soporte">Soporte</a></li>
+
+
+            </ul>
+
+        using (Html.BeginForm("LogOff", "login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+                @if ((bool)ViewBag.panel_administrador == true)
+                {
+                    <li>@Html.ActionLink("Administrador", "Index", "Administrador", routeValues: null, htmlAttributes: new { id = "Administrador" })</li>
+                }
+                <li>@Html.ActionLink("Mi Cuenta", "index", "control_cuenta", routeValues: null, htmlAttributes: new { id = "Administrador" })</li>
+
+
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+            </ul>
+        }
+    }
+    else
+    {
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Control Portal Empleos", "Index", "login", null, new { @class = "navbar-brand" })
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" data-target="#mdsoporte" id="btn2" class="btn2" data-url="/Soporte/soporte">Soporte</a></li>
+
+                <li>@Html.ActionLink("Iniciar sesión", "index", "login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+    }

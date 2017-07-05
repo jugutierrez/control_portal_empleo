@@ -1,0 +1,75 @@
+﻿@model  control_portal_empleo.Models.usuarios
+@{
+    ViewBag.Title = "Login";
+ 
+}
+
+</div>
+<div class="cover">
+    <div class="background-image-fixed cover-image" style="background-image : url('https://unsplash.imgix.net/photo-1422022098106-b3a9edc463af?w=1024&amp;q=50&amp;fm=jpg&amp;s=bbe0beb19ba846e0de37abd1f63acf13')"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center" style="background-color:white;">
+                <hr>
+                <div class="col-md-12 ">
+                    <i class="fa fa-5x fa-fw text-info fa-users"></i>
+                    <h2 class="text-info">Login de Usuarios</h2>
+                    <hr>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <label class="control-label" for="dedef">Usuario:</label>
+
+
+                        @Html.TextBoxFor(model => model.rut_usuario, new { @class = "form-control", @placeholder = "Ingrese Su Usuario" })
+
+                        @Html.ValidationMessageFor(model => model.rut_usuario)
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="asd1">Contraseña:</label>
+
+                        @Html.TextBoxFor(model => model.clave_usuario, new { @class = "form-control", @placeholder = "Ingrese su Contraseña", @type = "password", @maxlength = "20" })
+                        @Html.ValidationMessageFor(model => model.clave_usuario)
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-block btn-lg btn-info">Ingresar</button>
+                        <hr>
+                        <p>
+
+                            <div id="btn1" class="btn1" data-url="/login/recordar_credenciales">
+                                <h3><a class="text-info" data-toggle="modal" data-target="#mdsoporte">¿Olvido Sus Credenciales?</a></h3>
+                            </div>
+                        </p>
+                        <hr>
+                        <p>
+                            <h2> @Html.ActionLink("Registrarse", "registro", "login", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "text-info" })</h2>
+                        </p>
+                    </div>
+               <hr>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <script>
+
+        $(".btn1").on("click", function () {
+            var url = $(this).data('url');
+            $(".modaldiv").html("Cargando...");
+            $.get(url, function (data) {
+
+
+                $(".modaldiv").html(data);
+
+
+            });
+        });
+    </script>

@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B38BC62F-8366-42CA-B6B3-D4AFCC21ECF0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>control_portal_empleo</RootNamespace>
+    <AssemblyName>control_portal_empleo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.7.1-beta\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.15.0\lib\net45\zxing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.15.0\lib\net45\zxing.presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\HandleAntiforgeryTokenErrorAttribute.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\control_cuentaController.cs" />
+    <Compile Include="Controllers\control_curriculumsController.cs" />
+    <Compile Include="Controllers\control_informesController.cs" />
+    <Compile Include="Controllers\control_postulacionController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
+    <Compile Include="Controllers\ofertas_mainController.cs" />
+    <Compile Include="Controllers\SoporteController.cs" />
+    <Compile Include="Control_modulos.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\qrHelper.cs" />
+    <Compile Include="mail.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\areas.cs" />
+    <Compile Include="Models\area_experiencias_laborales.cs" />
+    <Compile Include="Models\capacitaciones_curriculums_vista.cs" />
+    <Compile Include="Models\cargo_experiencias_laborales.cs" />
+    <Compile Include="Models\categorias.cs" />
+    <Compile Include="Models\ciudades.cs" />
+    <Compile Include="Models\comunas.cs" />
+    <Compile Include="Models\contrato_ofertas.cs" />
+    <Compile Include="Models\Correo_Soporte.cs" />
+    <Compile Include="Models\cuestionarios.cs" />
+    <Compile Include="Models\cuestionarios_preguntas.cs" />
+    <Compile Include="Models\cuestionarios_preguntas_vista.cs" />
+    <Compile Include="Models\cuestionario_respuestas_vista.cs" />
+    <Compile Include="Models\curriculums.cs" />
+    <Compile Include="Models\departamentos.cs" />
+    <Compile Include="Models\direcciones.cs" />
+    <Compile Include="Models\documentos.cs" />
+    <Compile Include="Models\documentos_curriculums.cs" />
+    <Compile Include="Models\especificaciones_ofertas.cs" />
+    <Compile Include="Models\especificaciones_ofertas_habilidades.cs" />
+    <Compile Include="Models\especificaciones_ofertas_habilidades_vista.cs" />
+    <Compile Include="Models\especificaciones_ofertas_idiomas.cs" />
+    <Compile Include="Models\especificaciones_ofertas_idiomas_vista.cs" />
+    <Compile Include="Models\especificaciones_ofertas_profesiones.cs" />
+    <Compile Include="Models\especificaciones_ofertas_profesiones_vista.cs" />
+    <Compile Include="Models\especificaciones_ofertas_softwares.cs" />
+    <Compile Include="Models\especificaciones_ofertas_softwares_vista.cs" />
+    <Compile Include="Models\estado_curriculums.cs" />
+    <Compile Include="Models\estado_estudios.cs" />
+    <Compile Include="Models\estado_ofertas.cs" />
+    <Compile Include="Models\estado_postulaciones.cs" />
+    <Compile Include="Models\estado_usuarios.cs" />
+    <Compile Include="Models\estudios.cs" />
+    <Compile Include="Models\estudios_curriculums.cs" />
+    <Compile Include="Models\estudios_curriculums_vista.cs" />
+    <Compile Include="Models\experiencias_laborales_curriculums_vista.cs" />
+    <Compile Include="Models\filtros.cs" />
+    <Compile Include="Models\grado_conocimiento_softwares.cs" />
+    <Compile Include="Models\grado_habilidades.cs" />
+    <Compile Include="Models\habilidades.cs" />
+    <Compile Include="Models\habilidades_curriculums_vista.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\idiomas.cs" />
+    <Compile Include="Models\idiomas_curriculums_vista.cs" />
+    <Compile Include="Models\instituciones.cs" />
+    <Compile Include="Models\jornada_ofertas.cs" />
+    <Compile Include="Models\modelo_cuestionarios.cs" />
+    <Compile Include="Models\modelo_curriculum.cs" />
+    <Compile Include="Models\modelo_especificaciones.cs" />
+    <Compile Include="Models\modelo_ofertas_grupo_usuario.cs" />
+    <Compile Include="Models\modelo_ofertas_usuario.cs" />
+    <Compile Include="Models\modelo_persona_curriculum_vista.cs" />
+    <Compile Include="Models\modelo_postulacion.cs" />
+    <Compile Include="Models\Modelo_postulaciones.cs" />
+    <Compile Include="Models\modulos_activos.cs" />
+    <Compile Include="Models\nivel_idiomas.cs" />
+    <Compile Include="Models\nivel_importancia.cs" />
+    <Compile Include="Models\ofertas.cs" />
+    <Compile Include="Models\ofertas_categorias.cs" />
+    <Compile Include="Models\ofertas_documentos.cs" />
+    <Compile Include="Models\personas.cs" />
+    <Compile Include="Models\persona_curriculum_vista.cs" />
+    <Compile Include="Models\postulaciones.cs" />
+    <Compile Include="Models\postulaciones_cuestionarios.cs" />
+    <Compile Include="Models\preguntas.cs" />
+    <Compile Include="Models\Preguntas_respuestas.cs" />
+    <Compile Include="Models\preguntas_vista.cs" />
+    <Compile Include="Models\profesiones.cs" />
+    <Compile Include="Models\referencia_laboral.cs" />
+    <Compile Include="Models\regiones.cs" />
+    <Compile Include="Models\relevancia_documentos.cs" />
+    <Compile Include="Models\respuestas.cs" />
+    <Compile Include="Models\softwares.cs" />
+    <Compile Include="Models\softwares_curriculums_vista.cs" />
+    <Compile Include="Models\tipo_estudios.cs" />
+    <Compile Include="Models\tipo_habilidades.cs" />
+    <Compile Include="Models\tipo_ofertas.cs" />
+    <Compile Include="Models\tipo_personas.cs" />
+    <Compile Include="Models\tipo_preguntas.cs" />
+    <Compile Include="Models\tipo_usuarios.cs" />
+    <Compile Include="Models\trabajo_actual_modelo.cs" />
+    <Compile Include="Models\usuarios.cs" />
+    <Compile Include="Models\usuarios_ofertas.cs" />
+    <Compile Include="Models\usuarios_ofertas_vista.cs" />
+    <Compile Include="Models\vista_buscador_curriculum.cs" />
+    <Compile Include="Models\vista_buscador_oferta.cs" />
+    <Compile Include="Models\vista_cantidad_estados_oferta.cs" />
+    <Compile Include="Models\vista_historial_postulaciones.cs" />
+    <Compile Include="Models\vista_listado_cronologia_persona.cs" />
+    <Compile Include="Models\vista_oferta_descargar.cs" />
+    <Compile Include="Models\vista_pie_detalle_oferta.cs" />
+    <Compile Include="Models\vista_postulados_mes_año_usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="validarut.cs" />
+    <Compile Include="validar_email.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\navbar.css" />
+    <Content Include="Content\noUiSlider\css\nouislider.css" />
+    <Content Include="Content\noUiSlider\css\nouislider.min.css" />
+    <Content Include="Content\noUiSlider\css\nouislider.pips.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\fondo_login.jpg" />
+    <Content Include="Images\indicator.white.gif" />
+    <Content Include="Images\logo_muni.png" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\ofertascontrol - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ofertascontrol - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ofertascontrol.pubxml" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\noUiSlider\nouislider.js" />
+    <Content Include="Scripts\noUiSlider\nouislider.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\login\index.cshtml" />
+    <Content Include="Views\login\registro.cshtml" />
+    <Content Include="Views\ofertas_main\inicio_login_ofertas\index.cshtml" />
+    <Content Include="Views\ofertas_main\oferta_main_crear.cshtml" />
+    <Content Include="Views\ofertas_main\oferta_main_mis_ofertas.cshtml" />
+    <Content Include="Views\ofertas_main\oferta_main_detalle_oferta.cshtml" />
+    <Content Include="Views\ofertas_main\_oferta_main_detalle_especificaciones.cshtml" />
+    <Content Include="Views\ofertas_main\_oferta_main_detalle_cuestionarios.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_habilidades_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_idiomas_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_softwares_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_profesiones_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_habilidades_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_idiomas_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_profesiones_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_softwares_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_especificaciones_control.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_cuestionarios_control.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_cuestionarios_pregunta_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_cuestionarios_pregunta_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_preguntas_respuestas_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_preguntas_respuestas_elimina.cshtml" />
+    <Content Include="Views\control_postulacion\index.cshtml" />
+    <Content Include="Views\login\pie.cshtml" />
+    <Content Include="Views\Administrador\index.cshtml" />
+    <Content Include="Views\control_curriculums\index.cshtml" />
+    <Content Include="Views\Soporte\index.cshtml" />
+    <Content Include="Views\control_informes\index.cshtml" />
+    <Content Include="Views\control_cuenta\index.cshtml" />
+    <Content Include="Views\control_curriculums\_control_curriculums_detalle_persona.cshtml" />
+    <Content Include="Views\control_curriculums\_formato_curriculum_pdf.cshtml" />
+    <Content Include="Views\control_curriculums\_control_curriculums_lista.cshtml" />
+    <Content Include="Views\login\_recordar_login.cshtml" />
+    <Content Include="Views\Soporte\_soporte.cshtml" />
+    <Content Include="Views\ofertas_main\oferta_main_detalle_oferta_v2.cshtml" />
+    <Content Include="Views\Shared\_info_usuario_cuenta.cshtml" />
+    <Content Include="Views\control_postulacion\_control_postulacion_detalle_persona.cshtml" />
+    <Content Include="Views\control_postulacion\_formato_postulacion_pdf.cshtml" />
+    <Content Include="Views\control_postulacion\_cuestionario_postulacion_persona.cshtml" />
+    <Content Include="Views\control_postulacion\_status_postulacion_persona.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_valida_duplica_oferta.cshtml" />
+    <Content Include="Views\ofertas_main\_resumen_oferta_pdf.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_main_actualiza_estado_oferta.cshtml" />
+    <Content Include="Views\Shared\_actualiza_foto_usuario.cshtml" />
+    <Content Include="Views\control_cuenta\_vista_actualiza_datos_contacto_usuario.cshtml" />
+    <Content Include="Views\control_cuenta\_vista_actualiza_clave_usuario.cshtml" />
+    <Content Include="Views\control_curriculums\_historial_postulaciones_pdf.cshtml" />
+    <Content Include="Views\ofertas_main\_ofertas_main_actualiza_datos_oferta.cshtml" />
+    <Content Include="Views\control_informes\_control_informes_oferta.cshtml" />
+    <Content Include="Views\control_informes\_formato_informe_pdf.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_categorias\_ofertas_main_categorias_vista.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_categorias\_ofertas_main_categorias_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_categorias\_ofertas_main_categorias_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_documentos\_ofertas_main_documentos_vista.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_documentos\_ofertas_main_documentos_agrega.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_documentos\_ofertas_main_documentos_elimina.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_documentos\_ofertas_main_documentos_detalle.cshtml" />
+    <Content Include="Views\control_postulacion\_cronologia_postulacion_persona.cshtml" />
+    <Content Include="Views\control_curriculums\_cronologia_postulacion_persona_full_pdf.cshtml" />
+    <Content Include="Views\Administrador\_vista_usuarios_pendientes_adm.cshtml" />
+    <Content Include="Views\ofertas_main\inicio_login_ofertas\_vista_procentaje_ultima_oferta.cshtml" />
+    <Content Include="Views\ofertas_main\inicio_login_ofertas\_vista_total_postulados_mes_oferta.cshtml" />
+    <Content Include="Views\ofertas_main\inicio_login_ofertas\_vista_tabla_actualizacion_sistema.cshtml" />
+    <Content Include="Views\ofertas_main\ofertas_inclusivas\_vista_oferta_inclusiva.cshtml" />
+    <Content Include="Views\control_postulacion\_status_confirma_postulacion_persona.cshtml" />
+    <Content Include="Views\control_postulacion\_status_final_postulacion_persona.cshtml" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58567</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58568/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
