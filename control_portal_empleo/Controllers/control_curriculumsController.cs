@@ -203,8 +203,10 @@ namespace control_portal_empleo.Controllers
                 s_m_c2.idiomas_curriculums_vista = db.Database.SqlQuery<idiomas_curriculums_vista>("Exec sp_obtener_idiomas_curriculums @id_curriculum ={0} ", s_m_c2.persona_curriculum_vista.id_curriculum).ToList();
                 s_m_c2.softwares_curriculums_vista = db.Database.SqlQuery<softwares_curriculums_vista>("Exec sp_obtener_softwares_curriculums @id_curriculum ={0} ", s_m_c2.persona_curriculum_vista.id_curriculum).ToList();
                 s_m_c2.documentos_curriculums = db.Database.SqlQuery<documentos_curriculums>("exec sp_obtener_documentos_curriculums @id_curriculum = {0}", s_m_c2.persona_curriculum_vista.id_curriculum).ToList();
-
-                ViewBag.id_oferta = new SelectList(db.Database.SqlQuery<modelo_ofertas_grupo_usuario>("exec sp_obtener_listado_ofertas_invitacion @id_usuario = {0}",Convert.ToInt32(Session["usuario_id"])).ToList(), "id_oferta", "nombre_oferta");
+                var ka = db.usuarios.Find(Convert.ToInt32(Session["usuario_id"]));
+                
+                    
+                ViewBag.id_oferta = new SelectList(db.Database.SqlQuery<modelo_ofertas_grupo_usuario>("exec sp_obtener_listado_ofertas_invitacion @id_grupo_usuario = {0}", ka.id_grupo_usuario).ToList(), "id_oferta", "nombre_oferta");
 
                 ViewBag.cantidad_postulaciones = db.Database.SqlQuery<Int32>("sp_obtener_cantidad_historial_postulaciones @id_persona = {0}", id).Single();
                 carga_historial(id);

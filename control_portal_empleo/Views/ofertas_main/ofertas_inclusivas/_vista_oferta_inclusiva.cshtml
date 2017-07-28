@@ -6,9 +6,9 @@
     
 
 
-    @Html.Hidden("id_oferta", (Int32)ViewBag.id)
+    @Html.Hidden("id", (Int32)ViewBag.id)
 
-
+    @Html.Hidden("oferta_inclusiva", (Int32)ViewBag.oferta_inclusiva)
 
 
 
@@ -16,29 +16,42 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="well text-center">
-                <h2>Activador de Cuestionarios</h2>
+                <h2>Activador de oferta inclusiva</h2>
                 <ul class="list-group">
 
                     <li class="list-group-item">
                         Estado:
-                  
+                        @if (ViewBag.oferta_inclusiva != 1)
+                        {
                             <h1>
                                 <span class="label label-danger"> DESACTIVADO</span>
                             </h1>
-                        
-                     
+                        }
+                        else
+                        {
+                            <h1>
+                                <span class="label label-success"> ACTIVADO</span>
+                            </h1>
+
+                        }
                     </li>
                     <li class="list-group-item">
                         <div class="form-group">
-                        
+                            @if (ViewBag.oferta_inclusiva != 1)
+                            {
                                 <input type="submit" value="Activar" class="btn btn-lg btn-block btn-info" />
-                            
-                        
+                            }
+                            else
+                            {
+                                <input type="submit" value="Desactivar" class="btn btn-lg btn-block btn-info" />
+
+                            }
                         </div>
 
                     </li>
 
                 </ul>
+
             </div>
         </div>
     </div>

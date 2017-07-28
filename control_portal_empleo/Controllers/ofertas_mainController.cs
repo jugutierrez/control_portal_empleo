@@ -191,7 +191,7 @@ namespace control_portal_empleo.Controllers
                     ViewBag.id_jornada_oferta = new SelectList(db.jornada_ofertas, "id_jornada_oferta", "nombre_jornada_oferta", ofertas.id_jornada_oferta);
                     ViewBag.id_contrato_oferta = new SelectList(db.contrato_ofertas, "id_contrato_oferta", "nombre_contrato_oferta", ofertas.id_contrato_oferta);
                     ViewBag.id_tipo_oferta = new SelectList(db.tipo_ofertas, "id_tipo_oferta", "nombre_tipo_oferta", ofertas.id_tipo_oferta);
-
+                    ViewBag.oferta_inclusiva = ofertas.oferta_inclusiva;
                     carga_estado_ofertas(id);
 
                     id_oferta = Convert.ToInt32(id);
@@ -1462,7 +1462,8 @@ namespace control_portal_empleo.Controllers
             try
             {
                 vista_oferta_descargar k = db.Database.SqlQuery<vista_oferta_descargar>("exec sp_obtener_datos_oferta @id_oferta = {0}", id).Single();
-                ViewBag.id_oferta = 1;
+               // ViewBag.id_oferta = 1;
+                ViewBag.oferta_inclusiva = k.oferta_inclusiva;
                 carga_especificaciones(id);
                 return PartialView("_resumen_oferta_pdf", k);
              
@@ -1474,15 +1475,37 @@ namespace control_portal_empleo.Controllers
             }
         }
 
-        public ActionResult vista_activador_inclusividad_oferta()
+        public ActionResult vista_activador_inclusividad_oferta(int id)
         {
-            ViewBag.id = 3;
+            ViewBag.id = id;
+            var k = db.ofertas.Find(id);
+            ViewBag.oferta_inclusiva = k.oferta_inclusiva;
             return PartialView("ofertas_inclusivas/_vista_oferta_inclusiva");
         }
 
-        public ActionResult activador_inclusividad_oferta()
+        public ActionResult activador_inclusividad_oferta(int id , int oferta_inclusiva)
         {
-            return Json(new { success = true, responseText = "el elemento no se encuentra disponible para eliminar" }, JsonRequestBehavior.AllowGet);
+
+            try {
+                if (oferta_inclusiva == 0)
+                {
+                    oferta_inclusiva = 1;
+                }
+                else
+                {
+                    oferta_inclusiva = 0; 
+                }
+
+                db.Database.ExecuteSqlCommand("exec sp_actualiza_oferta_inclusiva @id_oferta = {0} , @oferta_inclusiva = {1}", id , oferta_inclusiva);
+
+                return Json(new { success = true, responseText = "Se ha realizado el cambio de estado de la inclusividad" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = "ah ocurrido un error al realizar el cambio de estado" }, JsonRequestBehavior.AllowGet);
+
+            }
+ 
         }
 
         public void filtro_total()

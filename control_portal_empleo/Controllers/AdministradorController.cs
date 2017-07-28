@@ -10,7 +10,7 @@ namespace control_portal_empleo.Controllers
     {
         //
         // GET: /Administrador/
-        [Authorize(Roles="3")]
+        [Authorize]
         public ActionResult Index()
         {
             return View();

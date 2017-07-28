@@ -31,5 +31,7 @@ namespace control_portal_empleo.Models
         public string  nombre_departamento { get; set; }
 
         public string  nombre_direccion { get; set; }
+
+        public int oferta_inclusiva { get; set; }
     }
 }

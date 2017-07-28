@@ -45,6 +45,7 @@ namespace control_portal_empleo.Models
         public int id_especificacion_oferta { get; set; }
         public virtual especificaciones_ofertas especificaciones_ofertas { get; set; }
 
+        public int oferta_inclusiva { get; set; }
 
 
 

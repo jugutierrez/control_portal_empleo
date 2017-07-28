@@ -91,8 +91,17 @@
                             <div class="col-md-12">
                                 <hr />
                                 <a target="_blank" href="@Url.Action("descarga_resumen_oferta_pdf","ofertas_main",new { id = @Html.DisplayFor(model => model.id_oferta), nombre_oferta = @Html.DisplayFor(model => model.nombre_oferta) })" class="btn btn-block btn-lg btn-info">Descargar Copia Oferta <i class="fa  fa-download text-default"></i></a>
+                                <hr />
+                            </div>
+                    
+                            <div class="col-md-12">
+
+                                <div id="btn1" class="btn1" data-url="@Url.Action("preview_oferta", new { id = Html.DisplayFor(model => model.id_oferta) })">
+                                    <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-lg btn-info">Previsualizar oferta <i class="fa text-default fa-desktop"></i></a>
+                                </div>
 
                             </div>
+                        
                        
                     </div>
                 </div>
@@ -130,100 +139,94 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
-                        
-                     
+                        <div class="col-md-12">
+
+                            <ul class="list-group">
+                                <li class="list-group-item text-center">
 
 
-                                @if (ViewBag.id_estado_oferta_actual != null)
-                                {
-                                    for (int i = 0; i < ViewBag.id_estado_oferta_control.Length; i++)
+
+                                    @if (ViewBag.id_estado_oferta_actual != null)
                                     {
-                                        if (ViewBag.id_estado_oferta_actual == ViewBag.id_estado_oferta_control[i])
+                                        for (int i = 0; i < ViewBag.id_estado_oferta_control.Length; i++)
                                         {
-                                            if (ViewBag.id_estado_oferta_actual != 0)
+                                            if (ViewBag.id_estado_oferta_actual == ViewBag.id_estado_oferta_control[i])
                                             {
-                                                <div class="alert alert-dismissable alert-info">
-                                                    @ViewBag.nombre_estado_oferta_control[i]
-                                                    </div>
+
+
+                                                <h2>    @ViewBag.nombre_estado_oferta_control[i]</h2>
+
+
                                             }
-                                            else
-                                            {
-                                                <div class="alert alert-dismissable alert-success">
-                                                    @ViewBag.nombre_estado_oferta_control[i]
-                                                    </div>
-                                                    }
-                                                    }
 
 
-                                                    }
-
-                                                    }
-                                                    else
-                                                    {
-                                                    <label>No se pudo obtener un estado</label>
-                                                    }
-                                                </div>
-
-
-
-
-
-                      
-                        <div class="col-md-4">
-                         
-@if ((bool)ViewBag.editar_ofertas == true)
-{
-                                if (ViewBag.id_estado_oferta_actual != null)
-                                {
-
-                                    if (ViewBag.id_estado_oferta_actual != 0)
-                                    {
-
-                                        <div id="btn1" class="btn1" data-url="@Url.Action("actualiza_estado_oferta", new { id = Html.DisplayFor(model => model.id_oferta), id_oferta_estado = ViewBag.id_estado_oferta_actual })">
-                                            <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-lg btn-info">Estado Oferta</a>
-                                        </div>
+                                        }
 
                                     }
                                     else
                                     {
+                                        <label>No se pudo obtener un estado</label>
+                                    }
+
+
+
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item text-center">
+@if ((Int32)ViewBag.oferta_inclusiva == 1)
+{
+                                    <h2> Esta Oferta es Apta para todo Publico</h2>
+}
+else
+{ <h2>  Esta Oferta NO es Apta para todo Publico</h2>}
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+@if ((bool)ViewBag.editar_ofertas == true)
+{
+                        <div class="col-md-6">
+
+                           
+                               
+
+                                  
+
                                         <div id="btn1" class="btn1" data-url="@Url.Action("actualiza_estado_oferta", new { id = Html.DisplayFor(model => model.id_oferta), id_oferta_estado = ViewBag.id_estado_oferta_actual })">
                                             <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-lg btn-info">Estado Oferta</a>
                                         </div>
-                                    }
 
-                                }
-}
+                                 
+
+                               
+
+                            
 
 
 
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="alert alert-dismissable alert-info">
-                                <strong>Well done!</strong>You successfully read this important alert message.
+                    
+                            <div class="col-md-6">
+                                <div id="btn1" class="btn1" data-url="@Url.Action("vista_activador_inclusividad_oferta", new { id = Html.DisplayFor(model => model.id_oferta) })">
+                                    <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-info btn-lg">Inclusividad oferta <i class="fa text-default fa-wheelchair"></i></a>
+                                </div>
                             </div>
-                        </div>
-@if ((bool)ViewBag.editar_ofertas == true)
-{
-                        <div class="col-md-4">
-                            <div id="btn1" class="btn1" data-url="@Url.Action("vista_activador_inclusividad_oferta", new { id = Html.DisplayFor(model => model.id_oferta) })">
-                            <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-info btn-lg">Inclusividad oferta <i class="fa text-default fa-wheelchair"></i></a>
-                        </div>
-                        </div>
-}
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-md-12">
-                          
-                            <div id="btn1" class="btn1" data-url="@Url.Action("preview_oferta", new { id = Html.DisplayFor(model => model.id_oferta) })">
-                                <a data-toggle="modal" data-target="#mdsoporte" class="btn btn-block btn-lg btn-info">Previsualizar oferta <i class="fa text-default fa-desktop"></i></a>
-                            </div>
+                            }
 
-                        </div>
                     </div>
+               
+              
                   
                  
                 </div>
